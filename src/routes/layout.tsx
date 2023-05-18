@@ -6,7 +6,7 @@ export default component$(() => {
   useStyles$(styles);
   return (
     <>
-      <main>
+      <main class="min-h-screen grid place-content-center py-16">
         <Slot />
       </main>
     </>

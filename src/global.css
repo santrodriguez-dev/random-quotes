@@ -1,4 +1,12 @@
 /**
+ * Tailwind CSS imports
+ * View the full documentation at https://tailwindcss.com
+ */
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+
+/**
  * WHAT IS THIS FILE?
  *
  * Globally applied styles. No matter which components are in the page or matching route,
@@ -33,4 +41,15 @@ body {
   line-height: inherit;
   background-color: #333333;
   color: white;
+  font-family: Raleway, sans-serif;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('/fonts/Raleway-Regular.ttf');
+}
+
+@font-face {
+  font-family: Raleway-SemiBold;
+  src: url('/fonts/Raleway-SemiBold.ttf');
 }
