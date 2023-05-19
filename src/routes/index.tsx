@@ -15,19 +15,20 @@ export default component$(() => {
   return (
     <section class="max-w-[714px]">
 
-      {quote &&
+      {!quote.value && <span>Error Fetching quote</span>}
+
+      {quote.value &&
         <>
           <Quote quote={quote.value?.quoteText} />
 
-          <div class="ml-28 px-8 py-12 mt-20 flex justify-between items-center cursor-pointer">
+          <Link href={`/author-quotes?author=${quote.value.quoteAuthor}`}
+            class="ml-28 pr-8 py-12 mt-20 flex justify-between items-center cursor-pointer">
             <div class="flex flex-col">
               <span class="text-[24px] font-['Raleway-SemiBold'] mb-5">{quote.value?.quoteAuthor}</span>
               <small class="text-[14px] text-[#828282]]">{quote.value?.quoteGenre}</small>
             </div>
-            <Link href={`/author-quotes?author=${quote.value.quoteAuthor}`}>
-              <span>{isNavigating ? 'Loading...' : <RigthArrow />}</span>
-            </Link>
-          </div>
+            <span>{isNavigating ? 'Loading...' : <RigthArrow />}</span>
+          </Link>
         </>
       }
 

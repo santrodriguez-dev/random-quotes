@@ -16,6 +16,8 @@ export default component$(() => {
   const quotes = useQuotes()
   const location = useLocation()
 
+  const currentAuthor = location.url.searchParams.get('author')
+
   return (
     <div class="max-w-[714px]">
 
@@ -23,14 +25,18 @@ export default component$(() => {
         <Link href="/">
           <BackArrow />
         </Link>
-        <h1 class="font-['Raleway-SemiBold'] text-[36px]">{location.url.searchParams.get('author')}</h1>
+        <h1 class="font-['Raleway-SemiBold'] text-[36px]">
+          {quotes.value.length > 1 ? currentAuthor : 'No quotes for ' + currentAuthor}
+        </h1>
       </div>
 
-      <div class="flex flex-col gap-20">
-        {quotes.value.map(quote => (
-          <Quote key={quote._id} quote={quote.quoteText} />
-        ))}
-      </div>
+      {!!quotes.value &&
+        <div class="flex flex-col gap-20">
+          {quotes.value.map(quote => (
+            <Quote key={quote._id} quote={quote.quoteText} />
+          ))}
+        </div>
+      }
     </div>
   )
 });
